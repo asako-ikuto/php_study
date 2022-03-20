@@ -8,7 +8,7 @@
 
 <body>
     <h2>日本の首都は？</h2>
-    <form action="" method="post">
+    <form method="post">
         <input type="text" name="capital_answer">
         <input type="submit" value="OK">
     </form>
