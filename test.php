@@ -11,20 +11,20 @@
     <form action="" method="post">
         <input type="text" name="capital_answer">
         <input type="submit" value="OK">
-        <!-- 正解・不正解判定結果 -->
-        <p style="font-size:1.2rem">
-            <?php
-            if (isset($_POST['capital_answer'])) {
-                $capital_answer = htmlspecialchars($_POST['capital_answer']);
-                if ($capital_answer === '東京') {
-                    echo '正解';
-                } else {
-                    echo '不正解';
-                }
-            }
-            ?>
-        </p>
     </form>
+    <!-- 正解・不正解判定結果 -->
+    <p style="font-size:1.2rem">
+        <?php
+        if (isset($_POST['capital_answer'])) {
+            $capital_answer = htmlspecialchars($_POST['capital_answer']);
+            if ($capital_answer === '東京') {
+                echo '正解';
+            } else {
+                echo '不正解';
+            }
+        }
+        ?>
+    </p>
 </body>
 
 </html>
