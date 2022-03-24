@@ -7,20 +7,20 @@
 </head>
 
 <body>
-    <h2>日本の首都は？</h2>
     <form method="post">
-        <input type="text" name="capital_answer">
-        <input type="submit" value="OK">
+        <input type="text" name="search_word">
+        <input type="submit" value="検索">
     </form>
-    <!-- 正解・不正解判定結果 -->
-    <p style="font-size:1.2rem">
+    <!-- 検索結果 -->
+    <p>
         <?php
-        if (isset($_POST['capital_answer'])) {
-            $capital_answer = htmlspecialchars($_POST['capital_answer']);
-            if ($capital_answer === '東京') {
-                echo '正解';
+        $fruits = ['apple', 'orange', 'strawberry'];
+        if (isset($_POST['search_word'])) {
+            $search_word = htmlspecialchars($_POST['search_word']);
+            if (in_array($search_word, $fruits)) {
+                echo "{$search_word}は、配列に含まれています。";
             } else {
-                echo '不正解';
+                echo "{$search_word}は、配列に含まれていません。";
             }
         }
         ?>
