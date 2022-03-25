@@ -1,3 +1,11 @@
+<?php
+$question["問題"] = "日本の首都は？";
+$answer["回答1"] = "大阪";
+$answer["回答2"] = "北海道";
+$answer["回答3"] = "箱根";
+$answer["回答4"] = "東京";
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -7,21 +15,15 @@
 </head>
 
 <body>
-    <form method="post">
-        <input type="text" name="search_word">
-        <input type="submit" value="検索">
-    </form>
-    <!-- 検索結果 -->
+    <h2>問題
+        <?php
+        echo $question["問題"];
+        ?>
+    </h2>
     <p>
         <?php
-        $fruits = ['apple', 'orange', 'strawberry'];
-        if (isset($_POST['search_word'])) {
-            $search_word = htmlspecialchars($_POST['search_word']);
-            if (in_array($search_word, $fruits)) {
-                echo "{$search_word}は、配列に含まれています。";
-            } else {
-                echo "{$search_word}は、配列に含まれていません。";
-            }
+        foreach ($answer as $key => $value) {
+            echo "{$key} {$value}<br>";
         }
         ?>
     </p>
