@@ -1,9 +1,3 @@
-<?php
-$hands = ['グー', 'チョキ', 'パー'];
-$win_massage = 'あなたの勝利です！';
-$lose_massage = 'あなたの敗北です。。。';
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -13,44 +7,38 @@ $lose_massage = 'あなたの敗北です。。。';
 </head>
 
 <body>
+    <h2>FizzBuzz問題</h2>
     <form method="post">
-        <select name="player_hand">
-            <option value="グー">グー</option>
-            <option value="チョキ">チョキ</option>
-            <option value="パー">パー</option>
-        </select>
-        <br>
-        <input type="submit" value="じゃんけん！">
+        <label style="width: 85px; display: inline-block;">FizzNum:</label><input type="text" name="fizz_num" placeholder="整数値を入力してください"><br>
+        <label style="width: 85px; display: inline-block;">BuzzNum:</label><input type="text" name="buzz_num" placeholder="整数値を入力してください"><br>
+        <input type="submit" value="実行">
     </form>
-    <p>
+    <p>【出力】</p>
+    <ul style="padding: 0; list-style: none;">
         <?php
-        if (isset($_POST['player_hand'])) {
-            //プレイヤーが選択した手
-            $player_hand = htmlspecialchars($_POST['player_hand']);
-            //相手の手をランダムで選択
-            $key = array_rand($hands);
-            $other_hand = $hands[$key];
-            //勝敗判定
-            switch ($player_hand) {
-                case ($player_hand === $other_hand):
-                    $result = 'あいこ';
-                    break;
-                case 'グー':
-                    $result = ($other_hand === 'チョキ') ? $win_massage : $lose_massage;
-                    break;
-                case 'チョキ':
-                    $result = ($other_hand === 'パー') ? $win_massage : $lose_massage;
-                    break;
-                case 'パー':
-                    $result = ($other_hand === 'グー') ? $win_massage : $lose_massage;
-                    break;
+        if (isset($_POST['fizz_num']) && isset($_POST['buzz_num'])) {
+            $fizz_num = htmlspecialchars($_POST['fizz_num']);
+            $buzz_num = htmlspecialchars($_POST['buzz_num']);
+            //整数、空欄チェック
+            if (!ctype_digit($fizz_num) || !ctype_digit($buzz_num)) {
+                echo "<li>整数値を入力してください</li>";
+                return;
             }
-            echo "自分： {$player_hand}<br>
-                  相手： {$other_hand}<br>
-                  {$result}";
+            //FIzzBuzz関数
+            for ($i = 1; $i < 100; $i++) {
+                if ($i % $fizz_num == 0 && $i % $buzz_num == 0) {
+                    echo "<li>FizzBuzz {$i}</li>";
+                } elseif ($i % $fizz_num == 0) {
+                    echo "<li>Fizz {$i}</li>";
+                } elseif ($i % $buzz_num == 0) {
+                    echo "<li>Buzz {$i}</li>";
+                } else {
+                    echo "<li>{$i}</li>";
+                }
+            }
         }
         ?>
-    </p>
+    </ul>
 </body>
 
 </html>
