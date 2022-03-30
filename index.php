@@ -39,12 +39,16 @@ try {
         <input type="submit" value="投稿">
     </form>
     <h2>投稿内容一覧</h2>
-    <?php foreach ($posts as $post) : ?>
+    <?php foreach ($posts as $key => $post) : ?>
         <div style="background-color: #88EAFB; border: solid 2px #6BB7C5; padding: 2px; margin-bottom: 30px;">
             <ul style="padding: 5px 15px; list-style: none; border: solid 2px #6BB7C5; background-color: #fff; margin: 0;">
-                <li>No:<?php echo $post['id']; ?></li>
+                <li>No:<?php echo $key + 1; ?></li>
                 <li>名前:<?php echo $post['name']; ?></li>
                 <li>投稿内容:<?php echo $post['content']; ?></li>
+                <form action="./delete.php" method="post">
+                    <input type="submit" value="削除">
+                    <input type="hidden" name="deleteId" value="<?php echo $post['id']; ?>">
+                </form>
             </ul>
         </div>
     <?php endforeach; ?>
