@@ -8,9 +8,9 @@ if (isset($_POST['deleteId'])) {
     try {
         $dbh = new PDO($dsn, $user, $password);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM post WHERE id = :id";
+        $sql = "DELETE FROM post WHERE id = :deleteId";
         $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(':id', $deleteId);
+        $stmt->bindValue(':deleteId', $deleteId);
         $stmt->execute();
     } catch (PDOException $e) {
         print($e->getMessage());
