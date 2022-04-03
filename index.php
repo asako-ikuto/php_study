@@ -45,6 +45,10 @@ try {
                 <li>No:<?php echo $key + 1; ?></li>
                 <li>名前:<?php echo $post['name']; ?></li>
                 <li>投稿内容:<?php echo $post['content']; ?></li>
+                <form action="./edit.php" method="post" style="margin-top: 20px;">
+                    <input type="submit" value="編集">
+                    <input type="hidden" name="editId" value="<?php echo $post['id']; ?>">
+                </form>
                 <form action="./delete.php" method="post">
                     <input type="submit" value="削除">
                     <input type="hidden" name="deleteId" value="<?php echo $post['id']; ?>">
